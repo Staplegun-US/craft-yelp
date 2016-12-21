@@ -14,7 +14,7 @@ class Yelp_YelpUrlFieldType extends BaseFieldType
 		return craft()->templates->render('yelp/yelpurl/input', array(
 			'name' => $name,
 			'value' => $parts[0],
-			'id' => $parts[1]
+			'id' => array_key_exists(1, $parts) ? $parts[1] : '';
 		));
 	}
 
