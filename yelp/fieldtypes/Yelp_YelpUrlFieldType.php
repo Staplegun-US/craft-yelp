@@ -12,26 +12,32 @@ class Yelp_YelpUrlFieldType extends BaseFieldType
 	{
 		return craft()->templates->render('yelp/yelpurl/input', array(
 			'name' => $name,
-			'value' => is_array($value) ? $value[0]: $value,
-			'id' => is_array($value) ? $value[1] : ''
+			'value' => is_array($value) ? $value['url']: $value,
+			'id' => is_array($value) ? $value['id'] : ''
 		));
 	}
 
 	public function prepValueFromPost($value)
 	{
-		$matches;
-		preg_match("/^(?:https?:\/\/)?(www\.)?yelp\.com\/biz\/([^\/]+)$/i", $value, $matches);
-		return $value . '|||' . $matches[2];
+		if ($value) {
+			$matches;
+			preg_match("/^(?:https?:\/\/)?(www\.)?yelp\.com\/biz\/([^\/]+)$/i", $value, $matches);
+			return $value . '|||' . $matches[2];
+		}
+		return;
 	}
 
 	public function prepValue($value)
 	{
-		$parts = explode('|||', $value);
-		if (is_array($parts)) {
-			return $parts[1];
-		} else {
-			return $value;
+		if ($value) {
+			$parts = explode('|||', $value);
+			if (is_array($parts)) {
+				return array('id' => $parts[1], 'url' => $parts[0]);
+			} else {
+				return $value;
+			}
 		}
+		return;
 	}
 }
 ?>

@@ -37,7 +37,7 @@ Requires a phone number parameter and accepts an optional array of options.
 
 #### Yelp URL Field
 
-A Yelp URL field is also included that will accept a Yelp URL and return the business ID when called in your template.
+A Yelp URL field is also included that will accept a Yelp URL. When invoked in the template, it has an `id` and a `url` property to get those respective values.
 
 
 ## License
