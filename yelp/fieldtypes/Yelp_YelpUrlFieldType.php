@@ -29,7 +29,13 @@ class Yelp_YelpUrlFieldType extends BaseFieldType
 	{
 		$matches;
 		preg_match("/^(?:https?:\/\/)?(www\.)?yelp\.com\/biz\/([^\/]+)$/i", $value, $matches);
-		return $matches[2];
+		if (array_key_exists(2, $matches)) {
+			return $matches[2];
+		} else {
+			// likely switched from another field type to yelp url field type. Just give back the original value.
+			// should probably improve this.
+			return $value;
+		}
 	}
 }
 ?>
