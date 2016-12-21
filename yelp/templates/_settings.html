@@ -1,0 +1,41 @@
+{% import '_includes/forms' as forms %}
+
+<h2>Yelp API Wrapper Settings</h2>
+
+<div class="yelp-field-container">
+{{ forms.textField({
+	label: "OAuth Token"|t,
+	id: 'oAuthToken',
+	name: 'oAuthToken',
+	value: settings.oAuthToken,
+	errors: settings.getErrors('oAuthToken')
+}) }}
+{{ forms.textField({
+	label: "OAuth Token Secret"|t,
+	id: 'oAuthTokenSecret',
+	name: 'oAuthTokenSecret',
+	value: settings.oAuthTokenSecret,
+	errors: settings.getErrors('oAuthTokenSecret')
+}) }}
+{{ forms.textField({
+	label: "OAuth Consumer Key"|t,
+	id: 'oAuthConsumerKey',
+	name: 'oAuthConsumerKey',
+	value: settings.oAuthConsumerKey,
+	errors: settings.getErrors('oAuthConsumerKey')
+}) }}
+{{ forms.textField({
+	label: "OAuth Consumer Secret"|t,
+	id: 'oAuthConsumerSecret',
+	name: 'oAuthConsumerSecret',
+	value: settings.oAuthConsumerSecret,
+	errors: settings.getErrors('oAuthConsumerSecret')
+}) }}
+{{ forms.textField({
+	label: "Cache Duration (in seconds)"|t,
+	id: 'cacheDuration',
+	name: 'cacheDuration',
+	value: settings.cacheDuration,
+	errors: settings.getErrors('cacheDuration')
+}) }}
+</div>
