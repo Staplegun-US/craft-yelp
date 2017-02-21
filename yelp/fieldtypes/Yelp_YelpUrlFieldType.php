@@ -21,7 +21,7 @@ class Yelp_YelpUrlFieldType extends BaseFieldType
 	{
 		if ($value) {
 			$matches;
-			preg_match("/^(?:https?:\/\/)?(www\.)?yelp\.com\/biz\/([^\/\?]+)$/i", $value, $matches);
+			preg_match("/^(?:https?:\/\/)?(www\.)?yelp\.com\/biz\/([^\/\?]+)/i", $value, $matches);
 			return $value . '|||' . $matches[2];
 		}
 		return;
