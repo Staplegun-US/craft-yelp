@@ -56,6 +56,8 @@ class Yelp_YelpService extends BaseApplicationComponent
 				craft()->cache->set($unsigned_url, $output, $this->cacheDuration);
 				return $output;
 			}
+		} catch (\Guzzle\Http\Exception\ClientErrorResponseException $e) {
+			return;
 		} catch(\Exception $e) {
 			throw $e;
 		}
